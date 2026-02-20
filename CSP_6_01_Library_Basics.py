@@ -9,7 +9,7 @@ from analytics import apply_markup
 from analytics import clean_text
 from analytics import filter_threshold
 def process_expenses(rawPrices):
-    for i in range(len[rawPrices]):
+    for i in range(len(rawPrices)):
         rawPrices[i]=apply_markup(rawPrices[i],0.15)
 
     return rawPrices
@@ -19,8 +19,8 @@ def process_expenses(rawPrices):
 # Modify the below function such that it asks the user for n scores and then returns the highest score and the average score of the list.
 def analyze_scores(n):
     scorse=[]
-    for i in range(n-1):
-        score=input("Give me the score")
+    for i in range(n):
+        score=float(input("Give me the score"))
         scorse.append(score)
     highest=get_highest(scorse)
     average=get_average(scorse)
@@ -32,10 +32,10 @@ def analyze_scores(n):
 #and all letters lower case.
 def sanitize_usernames(usernames):
     clean=clean_text(usernames)
-    list=[]
+    results=[]
     for names in clean:
-        list.append(names.replace(" ",""))
-    return list
+        results.append(names.replace(" ",""))
+    return results
 
 
     pass
@@ -60,16 +60,16 @@ def search_and_report(items,target):
         right=len(clean)-1
         while left<=right:
             mid=(left+right)//2
-            if clean(mid)==target:
+            if clean[mid]==target:
                 return mid
-            elif clean(mid)<target:
-                left+=1
+            elif clean[mid]<target:
+                left=mid+1
             else:
-                right-=1
+                right=mid-1
         return -1
     else:
         for i in range(len(clean)):
-            if clean(i)==target:
+            if clean[i]==target:
                 return i
         return -1
     pass
